@@ -1,0 +1,65 @@
+[
+    {
+        "model": "core.budget",
+        "pk": "a1c7819a-0918-4a79-8493-123456789003",
+        "fields": {
+            "user": 2,
+            "name": "events",
+            "created_at": "2024-03-06T20:59:08.666Z"
+        }
+    },
+    {
+        "model": "core.budget",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "name": "home",
+            "created_at": "2024-03-06T20:59:16.084Z"
+        }
+    },
+    {
+        "model": "core.budget",
+        "pk": 3,
+        "fields": {
+            "user": 2,
+            "name": "holidays",
+            "created_at": "2024-03-06T20:59:25.281Z"
+        }
+    },
+    {
+        "model": "core.budget",
+        "pk": 4,
+        "fields": {
+            "user": 2,
+            "name": "car",
+            "created_at": "2024-03-07T12:00:00.000Z"
+        }
+    },
+    {
+        "model": "core.budget",
+        "pk": 5,
+        "fields": {
+            "user": 2,
+            "name": "trip",
+            "created_at": "2024-03-07T13:00:00.000Z"
+        }
+    },
+    {
+        "model": "core.budget",
+        "pk": 6,
+        "fields": {
+            "user": 3,
+            "name": "shopping",
+            "created_at": "2024-03-07T14:00:00.000Z"
+        }
+    },
+    {
+        "model": "core.budget",
+        "pk": 7,
+        "fields": {
+            "user": 3,
+            "name": "entertainment",
+            "created_at": "2024-03-07T15:00:00.000Z"
+        }
+    }
+]

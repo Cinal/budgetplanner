@@ -58,8 +58,14 @@ shell: ## Shell
 db-shell: ## Psql client
 	$(BUILDKIT_EXPORTS) docker-compose $(CFG) exec $(PROJECT)-database psql $(PROJECT) budgetplanner-user
 
+
+.PHONY: loadfixtures
+loadfixtures: ## create django statics fiels
+	docker exec -it $(PROJECT)-budgetplanner-1 python budgetplanner/manage.py loaddata 
+
+
 .PHONY: init
-init: migrate collectstatic  ## Setup initial project data
+init: migrate collectstatic loadfixtures  ## Setup initial project data
 	docker exec -it $(PROJECT)-budgetplanner-1 bash -c 'DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_EMAIL=admin@example.com DJANGO_SUPERUSER_PASSWORD=adminpassword python budgetplanner/manage.py createsuperuser --noinput'
 
 .PHONY: help

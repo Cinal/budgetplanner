@@ -1,1 +1,0 @@
-[{"model": "core.transaction", "pk": 1, "fields": {"budget": 1, "category": "FOOD", "amount": "2232.00", "currency": "PLN", "description": "test", "date": "2024-03-06"}}]
