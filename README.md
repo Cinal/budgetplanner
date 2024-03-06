@@ -6,6 +6,7 @@ TODO:
 - paggintation
 - unit tests
 - integration tests
+- documentation
 
 
 Stack:
@@ -14,21 +15,20 @@ Stack:
 - PostgreSQL
 
 ## Requirements
-
 - Docker
 - docker-compose
 - make
 
 ## Installation
-
-Clone the repository:
-
 Run:
-make help
-
 make build
 make up
-make restart
+
+Check url:
+ http://localhost:8080/
+
+
+How check other commands:
 
 ```
  make help
@@ -48,11 +48,7 @@ Commands:
   db-shell         Psql client
   init             Setup initial project data
   ```
-Wykorzystanie poetry i skonfigurowanie
-testy moga pownny byc odpalany w odzielnym obrazie, nie implementowalem tego.
-- info o dokumetacji - open api
-- data migracji update zrobic
-info its run pn http://localhost:8080/
+
 
 
 
