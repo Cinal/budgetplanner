@@ -1,0 +1,89 @@
+[tool.poetry]
+name = "budgetplanner"
+version = "0.0.1"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+django = "^5"
+SQLAlchemy = "^1"
+SQLAlchemy-Utils = "^0"
+cryptography = "^3"
+django-filter = "^2"
+django-ltree = "^0"
+djangorestframework = "^3"
+python = ">=3.11"
+requests = "^2"
+virtualenv = "^20"
+psycopg2-binary = "^2.9"
+
+[tool.poetry.dev-dependencies]
+black = "^23.7.0"
+coverage = "^6"
+faker = "^13"
+pre-commit = "^2"
+pyclean = "^2"
+pytest = "^7"
+pytest_factoryboy = "^2"
+pytest-asyncio = "^0"
+pytest-cov = "^4"
+pytest-django = "^4"
+pytest-html = "^3"
+ruff = "^0.0.277"
+safety = "^2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = [
+    "venv",
+]
+ignore = [
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+    "D203",
+    "D213",
+]
+line-length = 100
+select = [
+    "C9",
+    "D",
+    "E",
+    "F",
+    "W",
+    "I001"
+]
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.black]
+line-length = 100
+
+[tool.coverage.report]
+fail_under = 97.5
+skip_empty = true
+
+[tool.coverage.run]
+branch = true
+data_file = "/tmp/coverage-data-file"
+omit = [
+    "*commands*",
+    "*migrations*",
+    "*test*",
+    "*/apps.py",
+    "budgetplanner/manage.py",
+    "budgetplanner/budgetplanner/wsgi.py",
+    "budgetplanner/budgetplanner/settings.py",
+]
+
+[tool.coverage.html]
+directory = "artifacts/html-coverage"

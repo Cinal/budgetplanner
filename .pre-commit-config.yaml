@@ -1,0 +1,46 @@
+# pre-commit install --hook-type pre-commit --hook-type commit-msg --hook-type pre-push
+
+## To run this without committing:
+# pre-commit run --all-files
+
+# If this fails, you can run it again if it autofix (eof, whitespace, isort) and it will pass
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: end-of-file-fixer
+        stages: [commit]
+      - id: trailing-whitespace
+        stages: [commit]
+      - id: requirements-txt-fixer
+        stages: [commit]
+      - id: check-executables-have-shebangs
+        stages: [commit]
+      - id: check-merge-conflict
+        stages: [commit]
+      - id: debug-statements
+        stages: [commit]
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.1.4
+    hooks:
+      - id: ruff
+        args: [--fix]
+  - repo: https://github.com/psf/black
+    rev: 23.10.0
+    hooks:
+      - id: black
+        entry: black --config pyproject.toml
+        stages: [commit]
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.19.1
+    hooks:
+      - id: gitlint
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        require_serial: true
+        args: ["--config-file", "pyproject.toml"]
+        language: system
+        types: [ python ]

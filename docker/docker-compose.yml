@@ -1,0 +1,39 @@
+version: "3.2"
+services:
+  budgetplanner-database:
+    restart: always
+    image: postgres
+    env_file:
+      - docker-compose.env
+    ports:
+      - '5433:5432'
+    volumes:
+      - ../pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - budgetplanner
+
+  budgetplanner:
+    image: budgetplanner/budgetplanner:latest
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+      args:
+        - GROUP_ID=${GROUP_ID}
+        - USER_ID=${USER_ID}
+        - USER_NAME=${USER_NAME}
+
+    env_file:
+      - docker-compose.env
+    ports:
+      - '8080:8080'
+    stop_grace_period: 1s
+    volumes:
+      - ../budgetplanner:/home/app/budgetplanner/:rw
+      - ../poetry.lock:/home/app/lib/poetry.lock:rw
+      - ../pyproject.toml:/home/app/lib/pyproject.toml:rw
+    networks:
+      - budgetplanner
+networks:
+  budgetplanner:
+    driver: bridge

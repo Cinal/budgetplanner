@@ -1,0 +1,8 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+pgdata/
+.venv/
+budgetplanner/static/
+artifacts/
+budgetplanner/artifacts/
+venv/
