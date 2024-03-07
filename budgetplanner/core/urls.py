@@ -1,6 +1,4 @@
-from django.urls import path
-
-from .views import (
+from core.views import (
     BudgetDetailView,
     BudgetListView,
     SharedBudgetDetailView,
@@ -8,6 +6,7 @@ from .views import (
     TransactionDetailView,
     TransactionListView,
 )
+from django.urls import path
 
 urlpatterns = [
     path("budgets/", BudgetListView.as_view(), name="budget-list"),

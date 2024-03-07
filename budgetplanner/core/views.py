@@ -1,11 +1,10 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-
-from budgetplanner.core.models import Budget, SharedBudget, Transaction
-from budgetplanner.core.serializers import (
+from core.models import Budget, SharedBudget, Transaction
+from core.serializers import (
     BudgetSerializer,
     SharedBudgetSerializer,
     TransactionSerializer,
 )
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 
 class BudgetListView(ListAPIView):
@@ -26,16 +25,16 @@ class SharedBudgetListView(ListAPIView):
 class BudgetDetailView(RetrieveAPIView):
     queryset = Budget.objects.all()
     serializer_class = BudgetSerializer
-    lookup_field = "id"
+    lookup_field = "pk"
 
 
 class TransactionDetailView(RetrieveAPIView):
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
-    lookup_field = "id"
+    lookup_field = "pk"
 
 
 class SharedBudgetDetailView(RetrieveAPIView):
     queryset = SharedBudget.objects.all()
     serializer_class = SharedBudgetSerializer
-    lookup_field = "id"
+    lookup_field = "pk"

@@ -3,7 +3,7 @@
 set -e
 
 gunicorn \
-    --bind 0.0.0.0:8080 budgetplanner.project.wsgi:application \
+    --bind 0.0.0.0:8080 budgetplanner.wsgi:application \
     --timeout ${GUNICORN_TIMEOUT:-300} \
     --workers 3
 ;;

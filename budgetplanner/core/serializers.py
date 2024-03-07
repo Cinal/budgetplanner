@@ -1,8 +1,7 @@
+from core.models import Budget, SharedBudget, Transaction
 from rest_framework.serializers import (
     ModelSerializer,
 )
-
-from budgetplanner.core.models import Budget, SharedBudget, Transaction
 
 
 class BudgetSerializer(ModelSerializer):

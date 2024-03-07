@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.gis",
-    "budgetplanner.project",
-    "budgetplanner.core",
     "rest_framework",
+    "core",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -53,7 +53,15 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "budgetplanner.project.urls"
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": tuple(),
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+}
+
+ROOT_URLCONF = "budgetplanner.urls"
 
 TEMPLATES = [
     {
@@ -71,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "budgetplanner.project.wsgi.application"
+WSGI_APPLICATION = "budgetplanner.wsgi.application"
 
 STATIC_URL = "./static/"
 STATIC_ROOT = "./static"
@@ -125,3 +133,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# AUTH_USER_MODEL = 'core.BudgetUser'
+AUTH_USER_MODEL = "users.BudgetUser"

@@ -19,11 +19,11 @@ ENV PIP_VERSION=23.1.2
 ENV POETRY_VERSION=1.5.1
 ENV PYTHON_VERSION=3.12
 
-ENV POETRY_RUN_PATH ${home_dir}/lib/
+ENV POETRY_RUN_PATH ${home_dir}/
 
 RUN apt-get update -qq && apt-get install --no-install-recommends -y \
   sudo build-essential python3-dev python3-venv \
-  postgresql-client libpq-dev libgdal-dev \
+  postgresql-client libpq-dev libgdal-dev vim \
   libcurl4-openssl-dev libssl-dev python3-psycopg2 \
   wait-for-it wget vim-tiny git jq \
   && apt-get clean
@@ -57,23 +57,21 @@ RUN $POETRY_PATH config installer.max-workers 2
 ENV PATH="${POETRY_HOME}/bin:${PATH}"
 USER $USER_NAME
 
-COPY poetry.lock pyproject.toml ${POETRY_RUN_PATH}
-
-RUN $POETRY_PATH -C $POETRY_RUN_PATH install --no-interaction --no-ansi
+COPY cinal-budgetplanner/poetry.lock cinal-budgetplanner/pyproject.toml ${POETRY_RUN_PATH}
+RUN (cd $POETRY_RUN_PATH && $POETRY_PATH install --no-interaction --no-ansi --only main)
 
 RUN $VENV_PATH/bin/pip3 install --retries 10 pygments ipython
 
 ENV PATH="${VENV_PATH}/bin:${PATH}"
-ENV PYTHONPATH=$home_dir
+ENV PYTHONPATH=$home_dir/budgetplanner/
 
-COPY docker/start-app.sh /opt/
-COPY ${app_name}/ ${code_dir}/
-
+COPY cinal-budgetplanner/docker/start-app.sh /opt/
+COPY cinal-budgetplanner/${app_name}/ ${code_dir}
 
 RUN python -m pip install gunicorn
 
 EXPOSE 8080
 
-WORKDIR $home_dir
+WORKDIR $code_dir
 
 ENTRYPOINT [ "/opt/start-app.sh" ]

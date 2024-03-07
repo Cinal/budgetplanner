@@ -34,39 +34,54 @@ clean: ## Cleanup.
 
 .PHONY: django
 django: ## Django shell
-	docker exec -it $(PROJECT)-budgetplanner-1 python budgetplanner/manage.py shell -i ipython
+	docker exec -it $(PROJECT)-budgetplanner-1 python manage.py shell -i ipython
 
-.PHONY: migrate 
+.PHONY: migrate
 migrate: ## Run migrations on db
-	docker exec -it $(PROJECT)-budgetplanner-1 python budgetplanner/manage.py migrate
+	docker exec -it $(PROJECT)-budgetplanner-1 python manage.py migrate
 
 
 .PHONY: collectstatic
-collectstatic: ## create django statics fiels
-	docker exec -it $(PROJECT)-budgetplanner-1 python budgetplanner/manage.py collectstatic
+collectstatic: ## Create django statics fiels
+	docker exec -it $(PROJECT)-budgetplanner-1 python manage.py collectstatic
 
 
-.PHONY: cacheclear 
+.PHONY: flushdb
+collectstatic: ## Create django statics fiels
+	docker exec -it $(PROJECT)-budgetplanner-1 python manage.py flush
+
+.PHONY: cacheclear
 cacheclear: ## Django cache clear
-	docker exec -it $(PROJECT)-budgetplanner-1 python budgetplanner/manage.py shell -c "from django.core.cache import cache;cache.clear();print('Cache purged.')"
+	docker exec -it $(PROJECT)-budgetplanner-1 python manage.py shell -c "from django.core.cache import cache;cache.clear();print('Cache purged.')"
 
-.PHONY: shell 
+.PHONY:
+logs: ## DOCKER: Containers logs.
+	$(BUILDKIT_EXPORTS) docker-compose $(CFG) logs -f
+
+
+.PHONY: shell
 shell: ## Shell
 	docker exec -it $(PROJECT)-budgetplanner-1 bash
 
-.PHONY: db-shell 
-db-shell: ## Psql client
+.PHONY: dbshell
+dbshell: ## Psql client
 	$(BUILDKIT_EXPORTS) docker-compose $(CFG) exec $(PROJECT)-database psql $(PROJECT) budgetplanner-user
 
+.PHONY: demodata
+demodata: ## Create demo data
+	docker exec -it $(PROJECT)-budgetplanner-1 python manage.py demodata
 
-.PHONY: loadfixtures
-loadfixtures: ## create django statics fiels
-	docker exec -it $(PROJECT)-budgetplanner-1 python budgetplanner/manage.py loaddata 
+.PHONY: makemigrations
+makemigrations: ## Create migrations
+	docker exec -it $(PROJECT)-budgetplanner-1 python manage.py makemigrations
+
+.PHONY: superuser
+superuser: ## Create demo data
+	docker exec -it $(PROJECT)-budgetplanner-1 bash -c 'DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_EMAIL=admin@example.com DJANGO_SUPERUSER_PASSWORD=adminpassword python budgetplanner/manage.py createsuperuser --noinput'
 
 
 .PHONY: init
-init: migrate collectstatic loadfixtures  ## Setup initial project data
-	docker exec -it $(PROJECT)-budgetplanner-1 bash -c 'DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_EMAIL=admin@example.com DJANGO_SUPERUSER_PASSWORD=adminpassword python budgetplanner/manage.py createsuperuser --noinput'
+init: build restart makemigrations migrate collectstatic demodata superuser ## Setup initial project data
 
 .PHONY: help
 help:
