@@ -382,17 +382,17 @@ files = [
 
 [[package]]
 name = "django"
-version = "5.0.3"
+version = "4.2.11"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 optional = false
-python-versions = ">=3.10"
+python-versions = ">=3.8"
 files = [
-    {file = "Django-5.0.3-py3-none-any.whl", hash = "sha256:5c7d748ad113a81b2d44750ccc41edc14e933f56581683db548c9257e078cc83"},
-    {file = "Django-5.0.3.tar.gz", hash = "sha256:5fb37580dcf4a262f9258c1f4373819aacca906431f505e4688e37f3a99195df"},
+    {file = "Django-4.2.11-py3-none-any.whl", hash = "sha256:ddc24a0a8280a0430baa37aff11f28574720af05888c62b7cfe71d219f4599d3"},
+    {file = "Django-4.2.11.tar.gz", hash = "sha256:6e6ff3db2d8dd0c986b4eec8554c8e4f919b5c1ff62a5b4390c17aff2ed6e5c4"},
 ]
 
 [package.dependencies]
-asgiref = ">=3.7.0,<4"
+asgiref = ">=3.6.0,<4"
 sqlparse = ">=0.3.1"
 tzdata = {version = "*", markers = "sys_platform == \"win32\""}
 
@@ -1450,4 +1450,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11"
-content-hash = "0a6ffe878524f8aec8b0b8806690385abfdfcb32a995e6e3f3aae17fa66c7aac"
+content-hash = "717671864136a221d11482be1791df39796f8c8e82f1dadf042873bffbe915a1"

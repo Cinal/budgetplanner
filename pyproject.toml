@@ -5,7 +5,7 @@ description = ""
 authors = []
 
 [tool.poetry.dependencies]
-django = "^5"
+django = "^4"
 SQLAlchemy = "^1"
 SQLAlchemy-Utils = "^0"
 cryptography = "^3"
