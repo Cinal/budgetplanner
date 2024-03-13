@@ -47,7 +47,7 @@ collectstatic: ## Create django statics fiels
 
 
 .PHONY: flushdb
-collectstatic: ## Create django statics fiels
+flushdb: ## Create django statics fiels
 	docker exec -it $(PROJECT)-budgetplanner-1 python manage.py flush
 
 .PHONY: cacheclear
@@ -82,6 +82,10 @@ superuser: ## Create demo data
 
 .PHONY: init
 init: build restart makemigrations migrate collectstatic demodata superuser ## Setup initial project data
+
+ .PHONY: tests
+tests: ## TESTS: Run tests.
+	docker exec -it budgetplanner-budgetplanner-tests-1 bash -c "cd ../ && ./bin/tests.sh"
 
 .PHONY: help
 help:

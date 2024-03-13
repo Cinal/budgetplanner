@@ -2,6 +2,9 @@
 
 
 TODO:
+- docker & docker-compose
+- makefile scripts
+- run unit tests
 - auth
 - paggintation
 - unit tests
@@ -19,7 +22,7 @@ Stack:
 - docker-compose
 - make
 
-## Installation
+## How to run project
 Run:
 make build
 make up

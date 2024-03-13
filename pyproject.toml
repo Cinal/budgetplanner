@@ -17,6 +17,7 @@ requests = "^2"
 virtualenv = "^20"
 psycopg2-binary = "^2.9"
 djangorestframework-simplejwt = "^5"
+
 [tool.poetry.dev-dependencies]
 black = "^23.7.0"
 coverage = "^6"
@@ -39,6 +40,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.ruff]
 exclude = [
     "venv",
+    "*migrations"
 ]
 ignore = [
     "D100",
@@ -87,3 +89,9 @@ omit = [
 
 [tool.coverage.html]
 directory = "artifacts/html-coverage"
+
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "budgetplanner.budgetplanner.settings"
+asyncio_mode = "strict"
+django_find_project = false

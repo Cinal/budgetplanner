@@ -2,7 +2,10 @@
 __pycache__/
 pgdata/
 .venv/
+venv/
 budgetplanner/static/
+<<<<<<< HEAD
 artifacts/
 budgetplanner/artifacts/
 venv/
+artifacts

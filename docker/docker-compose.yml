@@ -29,11 +29,38 @@ services:
       - '8080:8080'
     stop_grace_period: 1s
     volumes:
+      - ../bin:/home/app/bin/:rw
       - ../budgetplanner:/home/app/budgetplanner/:rw
       - ../poetry.lock:/home/app/lib/poetry.lock:rw
       - ../pyproject.toml:/home/app/lib/pyproject.toml:rw
+      - ../tests/:/home/app/tests/:rw
     networks:
       - budgetplanner
+
+
+  budgetplanner-tests:
+    image: budgetplanner/budgetplanner_tests:latest
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.tests
+      args:
+        - DEVEL=true
+      cache_from:
+        - budgetplanner/budgetplanner:latest
+    env_file:
+      - docker-compose.env
+    tty: true
+    volumes:
+      - ../bin/:/home/app/bin/:rw
+      - ../budgetplanner/:/home/app/budgetplanner/:rw
+      - ../poetry.lock:/home/app/lib/poetry.lock:rw
+      - ../pyproject.toml:/home/app/lib/pyproject.toml:rw
+      - ../tests/:/home/app/tests/:rw
+      - ../tests_conf/:/home/app/tests_conf:rw
+      - ../artifacts/:/home/app/artifacts:rw
+    networks:
+      - budgetplanner
+
 networks:
   budgetplanner:
     driver: bridge

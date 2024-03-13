@@ -1,0 +1,3 @@
+FROM budgetplanner/budgetplanner:latest
+
+RUN (cd $POETRY_RUN_PATH && $POETRY_PATH install --no-interaction --no-ansi --no-root)

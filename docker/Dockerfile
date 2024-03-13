@@ -60,6 +60,12 @@ USER $USER_NAME
 COPY cinal-budgetplanner/poetry.lock cinal-budgetplanner/pyproject.toml ${POETRY_RUN_PATH}
 RUN (cd $POETRY_RUN_PATH && $POETRY_PATH install --no-interaction --no-ansi --only main)
 
+ARG DEVELOP
+RUN if [ "$DEVELOP" = "true" ]; then \
+      cd $POETRY_RUN_PATH && \
+      $POETRY_PATH install --no-interaction --no-ansi --only --dev; \
+  fi
+
 RUN $VENV_PATH/bin/pip3 install --retries 10 pygments ipython
 
 ENV PATH="${VENV_PATH}/bin:${PATH}"
