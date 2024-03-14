@@ -77,7 +77,7 @@ makemigrations: ## Create migrations
 
 .PHONY: superuser
 superuser: ## Create demo data
-	docker exec -it $(PROJECT)-budgetplanner-1 bash -c 'DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_EMAIL=admin@example.com DJANGO_SUPERUSER_PASSWORD=adminpassword python budgetplanner/manage.py createsuperuser --noinput'
+	docker exec -it $(PROJECT)-budgetplanner-1 bash -c 'DJANGO_SUPERUSER_USERNAME=admin DJANGO_SUPERUSER_EMAIL=admin@example.com DJANGO_SUPERUSER_PASSWORD=adminpassword python manage.py createsuperuser --noinput'
 
 
 .PHONY: init
