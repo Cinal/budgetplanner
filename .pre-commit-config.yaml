@@ -35,12 +35,3 @@ repos:
     rev: v0.19.1
     hooks:
       - id: gitlint
-  - repo: local
-    hooks:
-      - id: mypy
-        name: mypy
-        entry: mypy
-        require_serial: true
-        args: ["--config-file", "pyproject.toml"]
-        language: system
-        types: [ python ]

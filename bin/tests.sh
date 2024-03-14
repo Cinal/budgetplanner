@@ -17,7 +17,7 @@ function unittests() {
     --no-migrations \
     --html=artifacts/pytest-html/index.html \
     --cov-config=/home/app/lib//pyproject.toml \
-    --cov=search \
+    --cov=budgetplanner \
     --cov-report=html \
     "${@:-tests}" || TESTS_FAILED=$?
 

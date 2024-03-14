@@ -1,14 +1,14 @@
 # budgetplanner
 
 
-TODO:
+DONE:
 - docker & docker-compose
 - makefile scripts
 - run unit tests
-- auth
 - paggintation
-- unit tests
-- integration tests
+
+TODO:
+- auth
 - documentation
 
 
