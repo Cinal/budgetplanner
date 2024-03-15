@@ -4,23 +4,23 @@ from core.serializers import (
     SharedBudgetSerializer,
     TransactionSerializer,
 )
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView
 from rest_framework.pagination import LimitOffsetPagination
 
 
-class BudgetListView(ListAPIView):
+class BudgetListView(ListCreateAPIView):
     queryset = Budget.objects.all()
     serializer_class = BudgetSerializer
     pagination_class = LimitOffsetPagination
 
 
-class TransactionListView(ListAPIView):
+class TransactionListView(ListCreateAPIView):
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
     pagination_class = LimitOffsetPagination
 
 
-class SharedBudgetListView(ListAPIView):
+class SharedBudgetListView(ListCreateAPIView):
     queryset = SharedBudget.objects.all()
     serializer_class = SharedBudgetSerializer
     pagination_class = LimitOffsetPagination
