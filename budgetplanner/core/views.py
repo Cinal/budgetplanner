@@ -5,6 +5,7 @@ from core.serializers import (
     TransactionSerializer,
 )
 from django.db.models import Q
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
@@ -37,8 +38,14 @@ class TransactionListView(ListCreateAPIView):
     pagination_class = LimitOffsetPagination
 
     def get_queryset(self):
-        queryset = Transaction.objects.all()
+        user = self.request.user
+
         budget_id = self.request.query_params.get("budget_id", None)
+
+        queryset = Transaction.objects.filter(
+            Q(budget__user=user) | Q(budget__sharedbudget__user=user)
+        ).distinct()
+
         if budget_id is not None:
             queryset = queryset.filter(budget__id=budget_id)
         return queryset
@@ -101,3 +108,18 @@ class ShareBudgetView(APIView):
             return Response({"message": "Budget shared successfully."}, status=status.HTTP_200_OK)
         except Budget.DoesNotExist:
             return Response({"error": "Budget not found."}, status=status.HTTP_404_NOT_FOUND)
+
+
+class UnshareBudgetView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, budget_id):
+        email = request.data.get("email")
+        budget = get_object_or_404(Budget, id=budget_id, user=request.user)
+        user_to_unshare = get_object_or_404(BudgetUser, email=email)
+
+        shared_budget_instance = get_object_or_404(
+            SharedBudget, budget=budget, user=user_to_unshare
+        )
+        shared_budget_instance.delete()
+        return Response({"message": "Budget unshared successfully."}, status=200)

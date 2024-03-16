@@ -6,6 +6,7 @@ from core.views import (
     SharedBudgetListView,
     TransactionDetailView,
     TransactionListView,
+    UnshareBudgetView,
 )
 from django.urls import path
 from rest_framework_simplejwt.views import (
@@ -25,6 +26,7 @@ urlpatterns = [
     path("budgets/", BudgetListView.as_view(), name="budget-list"),
     path("budgets/<int:pk>/", BudgetDetailView.as_view(), name="budget-detail"),
     path("budgets/<int:budget_id>/share/", ShareBudgetView.as_view(), name="budget-share"),
+    path("budgets/<int:budget_id>/unshare/", UnshareBudgetView.as_view(), name="budget-unshare"),
     path("transactions/", TransactionListView.as_view(), name="transaction-list"),
     path("transactions/<int:pk>/", TransactionDetailView.as_view(), name="transaction-detail"),
     path("shared-budgets/", SharedBudgetListView.as_view(), name="shared-budget-list"),

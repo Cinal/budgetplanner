@@ -1,8 +1,46 @@
 _type: export
 __export_format: 4
-__export_date: 2024-03-16T22:45:41.729Z
+__export_date: 2024-03-16T22:58:55.458Z
 __export_source: insomnia.desktop.app:v8.6.1
 resources:
+  - _id: req_49a26fe1d9114baaa06d66f56ab6c5e6
+    parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    modified: 1710629340366
+    created: 1710629276254
+    url: http://localhost:8080/api/v1/transactions
+    name: Transactions
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+        id: pair_9e390771674c46a5a06c14ae7d2a94a1
+      - id: pair_5c70947fd3194a378fafff89555726e4
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwNjI5NjE1LCJpYXQiOjE3MTA2MjkzMTUsImp0aSI6ImUwODRjY2M4N2M3MTQ5MThhYTNhOGE3ZjJiZDBjODJhIiwidXNlcl9pZCI6MTAwfQ.D241FUtGdLNQGcwHDBxMTk3Cnv3mmqK3hsYLLnImzX0
+        description: ""
+    authentication: {}
+    metaSortKey: -1710629276254
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    parentId: null
+    modified: 1710628667916
+    created: 1710628667916
+    name: BudgetPlanner
+    description: ""
+    scope: collection
+    _type: workspace
   - _id: req_5f1b349f25644c5f805f225b6a0369bb
     parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
     modified: 1710629030460
@@ -38,14 +76,41 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
-    parentId: null
-    modified: 1710628667916
-    created: 1710628667916
-    name: BudgetPlanner
+  - _id: req_71a004d6609e4cba9a7874b0f471258d
+    parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    modified: 1710629911672
+    created: 1710629845129
+    url: http://localhost:8080/api/v1/budgets/1/unshare/
+    name: Budget Unshare
     description: ""
-    scope: collection
-    _type: workspace
+    method: POST
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_1b0cfe82d385484c92b8b84633cde4ae
+      - name: User-Agent
+        value: insomnia/8.6.1
+        id: pair_3e3e9214a168438e8dda4d141182ee04
+      - id: pair_01ee0f93cb8e43fc80b506f054c30346
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwNjI4MzIxLCJpYXQiOjE3MTA2MjgwMjEsImp0aSI6ImMxMGRmYzUyYTJhNTRjMWRhYTZhMDQ1ZWQ2NmViNjNhIiwidXNlcl9pZCI6MTAwfQ.gwqAAhHjt63pZVDsFOEqz6j1C6QIIKg11Xxxc5AD5ko
+        description: ""
+    authentication: {}
+    metaSortKey: -1710628884562
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_59865630538c4d8f8756eb6563244134
     parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
     modified: 1710628929032
