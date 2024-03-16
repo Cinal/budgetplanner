@@ -1,6 +1,7 @@
 from core.views import (
     BudgetDetailView,
     BudgetListView,
+    ShareBudgetView,
     SharedBudgetDetailView,
     SharedBudgetListView,
     TransactionDetailView,
@@ -23,6 +24,7 @@ urlpatterns = [
     path("token/verify/", TokenVerifyView.as_view(), name="token_verify"),
     path("budgets/", BudgetListView.as_view(), name="budget-list"),
     path("budgets/<int:pk>/", BudgetDetailView.as_view(), name="budget-detail"),
+    path("budgets/<int:budget_id>/share/", ShareBudgetView.as_view(), name="budget-share"),
     path("transactions/", TransactionListView.as_view(), name="transaction-list"),
     path("transactions/<int:pk>/", TransactionDetailView.as_view(), name="transaction-detail"),
     path("shared-budgets/", SharedBudgetListView.as_view(), name="shared-budget-list"),

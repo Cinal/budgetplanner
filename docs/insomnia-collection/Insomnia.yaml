@@ -1,0 +1,192 @@
+_type: export
+__export_format: 4
+__export_date: 2024-03-16T22:45:41.729Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_5f1b349f25644c5f805f225b6a0369bb
+    parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    modified: 1710629030460
+    created: 1710628955984
+    url: http://localhost:8080/api/v1/budgets/1/share/
+    name: Budget Share
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"email": "default@budgetplanner.com"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_1b0cfe82d385484c92b8b84633cde4ae
+      - name: User-Agent
+        value: insomnia/8.6.1
+        id: pair_3e3e9214a168438e8dda4d141182ee04
+      - id: pair_01ee0f93cb8e43fc80b506f054c30346
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwNjI4MzIxLCJpYXQiOjE3MTA2MjgwMjEsImp0aSI6ImMxMGRmYzUyYTJhNTRjMWRhYTZhMDQ1ZWQ2NmViNjNhIiwidXNlcl9pZCI6MTAwfQ.gwqAAhHjt63pZVDsFOEqz6j1C6QIIKg11Xxxc5AD5ko
+        description: ""
+    authentication: {}
+    metaSortKey: -1710628955984
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    parentId: null
+    modified: 1710628667916
+    created: 1710628667916
+    name: BudgetPlanner
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_59865630538c4d8f8756eb6563244134
+    parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    modified: 1710628929032
+    created: 1710628813140
+    url: http://localhost:8080/api/v1/budgets
+    name: Budget List
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+        id: pair_d26e7864f36943f0805270586acc6ead
+      - id: pair_0fed64c2c3984c9a98b26dd92d82f259
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwNjI5MjE2LCJpYXQiOjE3MTA2Mjg5MTYsImp0aSI6ImM1OTBjNGM5ODIzZDQxYmQ5OWNkNjk1YzNiNDBiNDkwIiwidXNlcl9pZCI6MTAwfQ.GW_nKVPyt3wuyWoe_hVNL_93a2pvfHJoHiWYu8hn41c
+        description: ""
+    authentication: {}
+    metaSortKey: -1710628813140
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2bfabe3a1e8249b2bd48778d9bf1d75e
+    parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    modified: 1710628967602
+    created: 1710628882612
+    url: http://localhost:8080/api/v1/budgets/1
+    name: Budget Details
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+        id: pair_d26e7864f36943f0805270586acc6ead
+      - id: pair_0fed64c2c3984c9a98b26dd92d82f259
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwNjI5MjE2LCJpYXQiOjE3MTA2Mjg5MTYsImp0aSI6ImM1OTBjNGM5ODIzZDQxYmQ5OWNkNjk1YzNiNDBiNDkwIiwidXNlcl9pZCI6MTAwfQ.GW_nKVPyt3wuyWoe_hVNL_93a2pvfHJoHiWYu8hn41c
+        description: ""
+    authentication: {}
+    metaSortKey: -1710628791085.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_eb67bd6f804f4f3aa0d56c0260ce73bd
+    parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    modified: 1710628902963
+    created: 1710628769031
+    url: http://localhost:8080/api/v1/register/
+    name: Auth - Register
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+            "password": "test",
+            "first_name": "Jan",
+            "last_name": "Kowalski",
+            "email": "example@example.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710628769031
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7f1ca1cc852941558e4423b68135efe6
+    parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    modified: 1710628912318
+    created: 1710628683015
+    url: http://localhost:8080/api/v1/token/
+    name: Auth - Get token
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"email": "default@budgetplanner.com", "password": "budget"}'
+    parameters:
+      - id: pair_7b673f50e9384aad8713a31d20970127
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710628683015
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_45644c620ad91fa6b975ad48f5ccbe9f52247451
+    parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    modified: 1710628667917
+    created: 1710628667917
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1710628667917
+    _type: environment
+  - _id: jar_45644c620ad91fa6b975ad48f5ccbe9f52247451
+    parentId: wrk_1e3e3894c5a0470a95ff4463bb9e33ac
+    modified: 1710628667918
+    created: 1710628667918
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar

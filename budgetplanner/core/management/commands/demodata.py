@@ -1,6 +1,7 @@
 from core.constants import CategoryChoices
-from core.models import Budget, BudgetUser, SharedBudget, Transaction
+from core.models import Budget, SharedBudget, Transaction
 from django.core.management.base import BaseCommand
+from users.models import BudgetUser
 
 DEMODATA_IDS = {
     "user": {
@@ -24,7 +25,7 @@ DEMODATA_IDS = {
     "transaction": [
         {
             "budget_id": 10,
-            "category": CategoryChoices.UTILITIES,
+            "category": CategoryChoices.UTILITIES.value,
             "amount": 50.00,
             "currency": "USD",
             "description": "Weekly groceries",
@@ -32,7 +33,7 @@ DEMODATA_IDS = {
         },
         {
             "budget_id": 11,
-            "category": CategoryChoices.FOOD,
+            "category": CategoryChoices.FOOD.value,
             "amount": 12.00,
             "currency": "USD",
             "description": "Weekly groceries",
@@ -40,7 +41,7 @@ DEMODATA_IDS = {
         },
         {
             "budget_id": 12,
-            "category": CategoryChoices.ENTERTAINMENT,
+            "category": CategoryChoices.ENTERTAINMENT.value,
             "amount": 123.00,
             "currency": "USD",
             "description": "Weekly groceries",
