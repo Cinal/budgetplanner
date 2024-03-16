@@ -4,14 +4,22 @@ from core.serializers import (
     SharedBudgetSerializer,
     TransactionSerializer,
 )
-from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 class BudgetListView(ListCreateAPIView):
-    queryset = Budget.objects.all()
     serializer_class = BudgetSerializer
     pagination_class = LimitOffsetPagination
+    authentication_classes = [JWTAuthentication, SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Budget.objects.filter(user=user)
 
 
 class TransactionListView(ListCreateAPIView):
