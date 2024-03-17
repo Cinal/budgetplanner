@@ -1,20 +1,8 @@
-# budgetplanner
-
-
-DONE:
-- docker & docker-compose
-- makefile scripts
-- run unit tests
-- paggintation
-
-TODO:
-- auth
-- documentation
-
+# BudgetPlanner
 
 Stack:
 - Python 3.12
-- Django 5
+- Django 4s
 - PostgreSQL
 
 ## Requirements
@@ -52,7 +40,18 @@ Commands:
   init             Setup initial project data
   ```
 
+<img src="https://github.com/Cinal/budgetplanner/blob/master/docs/makefile.png"/>
+<img src="https://github.com/Cinal/budgetplanner/blob/master/docs/make_tests.png"/>
+<img src="https://github.com/Cinal/budgetplanner/blob/master/docs/insomnia.png"/>
 
+
+DONE:
+- docker & docker-compose
+- makefile scripts
+- run unit tests
+- pagination
+- auth
+- Insomnia API collectiondo
 
 
 ## Family budget - coding task description

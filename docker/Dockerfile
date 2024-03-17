@@ -57,7 +57,7 @@ RUN $POETRY_PATH config installer.max-workers 2
 ENV PATH="${POETRY_HOME}/bin:${PATH}"
 USER $USER_NAME
 
-COPY cinal-budgetplanner/poetry.lock cinal-budgetplanner/pyproject.toml ${POETRY_RUN_PATH}
+COPY budgetplanner/poetry.lock budgetplanner/pyproject.toml ${POETRY_RUN_PATH}
 RUN (cd $POETRY_RUN_PATH && $POETRY_PATH install --no-interaction --no-ansi --only main)
 
 ARG DEVELOP
@@ -71,8 +71,8 @@ RUN $VENV_PATH/bin/pip3 install --retries 10 pygments ipython
 ENV PATH="${VENV_PATH}/bin:${PATH}"
 ENV PYTHONPATH=$home_dir/budgetplanner/
 
-COPY cinal-budgetplanner/docker/start-app.sh /opt/
-COPY cinal-budgetplanner/${app_name}/ ${code_dir}
+COPY budgetplanner/docker/start-app.sh /opt/
+COPY budgetplanner/${app_name}/ ${code_dir}
 
 RUN python -m pip install gunicorn
 

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cinal-budgetplanner"
+name = "budgetplanner"
 version = "0.0.1"
 description = ""
 authors = []
